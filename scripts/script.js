@@ -23,16 +23,16 @@ function run(location) {
       const road = geocoded.address.road;
       const display_name = geocoded.display_name;
 
-      output.innerText += municipality + ", " + city;
+      output.innerText += "\n" + county + ", " + city;
 
     }).catch(err => {
-      error_output = "Error: " + err.message;
+      error_output.innerText = "Error: " + err;
     })
 }
 
 function main() {
   if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(run, (err) => {
+    navigator.geolocation.getCurrentPosition(run, (err) => {
       error_output.textContent = "Error: " + err.message;
       console.error(err);
     }, { enableHighAccuracy: true });
@@ -43,5 +43,5 @@ function main() {
 
 window.addEventListener("load", () => {
   main();
-  // setInterval(main, 60000);
+  setInterval(main, 60000);
 });
