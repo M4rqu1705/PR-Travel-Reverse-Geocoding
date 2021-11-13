@@ -1,12 +1,14 @@
-var output = document.getElementById("output");
+let output = document.getElementById("output");
+let error_output = document.getElementById("error");
 
 function run(location) {
   const latitude = location.coords.latitude;
   const longitude = location.coords.longitude;
+  const accuracy = location.coords.accuracy;
 
-  console.log(latitude);
-  console.log(longitude);
-  console.log(location.coords.accuracy);
+  output.innerText = latitude;
+  output.innerText += ", " + longitude;
+  output.innerText += "(" + accuracy + ")\n";
 
   let reverseGeocoder = new BDCReverseGeocode();
 
@@ -14,7 +16,7 @@ function run(location) {
     latitude: -latitude,
     longitude: longitude,
   }, function (result) {
-    output.innerText = result.locality;
+    output.innerText += result.locality;
   });
 
 
@@ -25,10 +27,11 @@ function run(location) {
 function main() {
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(run, (err) => {
+      error_output.textContent = "Error: " + err.message;
       console.error(err);
     }, { enableHighAccuracy: true });
   } else {
-    document.getElementsByTagName("body")[0].innerHTML = "Geolocation is not supported by this browser.";
+    error_output.textContent = "Error: Geolocation is not supported by this browser.";
   }
 }
 
