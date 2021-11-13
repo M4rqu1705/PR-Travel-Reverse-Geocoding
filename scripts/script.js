@@ -11,7 +11,7 @@ function run(location) {
 
   coordinates.innerText = latitude + ", " + longitude;
 
-  fetch("https://nominatim.openstreetmap.org/reverse?format=json&lat=18.4030875&lon=-65.9637902&zoom=18&addressdetails=1")
+  fetch("https://nominatim.openstreetmap.org/reverse?format=json&lat=" + latitude + "&lon=" + longitude + "&zoom=18&addressdetails=1")
     .then(res => res.json())
     .then((geocoded) => {
       const city = geocoded.address.city;
