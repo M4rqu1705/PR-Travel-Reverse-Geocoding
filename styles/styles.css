@@ -52,7 +52,6 @@ body{
 #theme{
   display: block;
   position: fixed;
-  top: 0;
   right: 0;
   padding: 12px;
   margin: 12px;
@@ -60,6 +59,15 @@ body{
   border: none;
   color: var(--background-color);
   background-color: var(--foreground-color);
+  font-size: min(4vw, 4vh);
+  font-weight: 600;
+  
+}
+
+@media (orientation: landscape) {
+  #theme{
+    top: 0;
+  }
 }
 
 @media (orientation: portrait) {
@@ -102,4 +110,9 @@ body{
   #display-name {
     text-align: left;
   }
+
+  #theme{
+    bottom: 0;
+  }
+
 }
