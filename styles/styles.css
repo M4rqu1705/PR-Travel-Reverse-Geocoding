@@ -1,10 +1,10 @@
 *{
-  font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
-
-  --foreground-color: white;
+  
+  --foreground-color: whitesmoke;
   --background-color: #2c2c2c;
-
+  
+  font-size: 30px;
   color: var(--foreground-color);
   background-color: var(--background-color);
 }
@@ -13,13 +13,81 @@ html, body{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
-#output{
-  max-width: 50%;
+body{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+#coordinates{
+ font-size: 7.5vw;
+ white-space: nowrap;
+}
+
+#summary{
+  font-size: 10vw;
+  /* white-space: nowrap; */
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+#display_name{
+  font-size: 7.5vw;
+  /* white-space: nowrap; */
 }
 
 #error{
-  max-width: 50%;
+  width: 90%;
   color: tomato;
+}
+
+@media (orientation: portrait) {
+  body {
+    justify-content: start;
+    padding: 1rem;
+  }
+
+  #coordinates::before{
+    font-size: 6vw;
+    text-decoration: underline;
+    content: "Latitud/Longitud:\A";
+  }
+
+  #coordinates{
+    text-align: center;
+    font-size: 7.5vw;
+    white-space: pre;
+  }
+
+  #summary::before {
+    font-size: 7.5vw;
+    text-decoration: underline;
+    content: "Condado, Ciudad:\A";
+    white-space: pre;
+  }
+   
+  #summary{
+    text-align: center;
+    font-size: 10vw;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+   
+  #display-name::before {
+    font-size: 6vw;
+    text-decoration: underline;
+    content: "Dirección:\A\A";
+    white-space: pre;
+  }
+  
+  #display-name {
+    text-align: left;
+    font-size: 7.5vw;
+  }
 }

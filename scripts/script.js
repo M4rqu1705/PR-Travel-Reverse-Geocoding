@@ -1,4 +1,6 @@
-let output = document.getElementById("output");
+let coordinates = document.getElementById("coordinates");
+let summary = document.getElementById("summary");
+let display_name = document.getElementById("display-name");
 let error_output = document.getElementById("error");
 
 function run(location) {
@@ -6,9 +8,7 @@ function run(location) {
   const longitude = location.coords.longitude;
   const accuracy = location.coords.accuracy;
 
-  output.innerText = latitude;
-  output.innerText += ", " + longitude;
-  // output.innerText += " (" + accuracy + ")\n";
+  coordinates.innerText = latitude + ", " + longitude;
 
   fetch("https://nominatim.openstreetmap.org/reverse?format=json&lat=18.4030875&lon=-65.9637902&zoom=18&addressdetails=1")
     .then(res => res.json())
@@ -21,9 +21,10 @@ function run(location) {
       const neighbourhood = geocoded.address.neighbourhood;
       const postcode = geocoded.address.postcode;
       const road = geocoded.address.road;
-      const display_name = geocoded.display_name;
+      // const display_name = geocoded.display_name;
 
-      output.innerText += "\n" + county + ", " + city;
+      summary.innerText = county + ", " + city;
+      display_name.innerText = geocoded.display_name;
 
     }).catch(err => {
       error_output.innerText = "Error: " + err;
@@ -43,5 +44,5 @@ function main() {
 
 window.addEventListener("load", () => {
   main();
-  setInterval(main, 60000);
+  setInterval(main, 30000);
 });
