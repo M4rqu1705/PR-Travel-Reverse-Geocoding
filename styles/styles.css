@@ -1,8 +1,10 @@
-*{
-  font-family: Arial, Helvetica, sans-serif;
-  
+:root {
   --foreground-color: whitesmoke;
   --background-color: #2c2c2c;
+}
+
+*{
+  font-family: Arial, Helvetica, sans-serif;
   
   font-size: 30px;
   color: var(--foreground-color);
@@ -26,25 +28,38 @@ body{
 }
 
 #coordinates{
- font-size: 7.5vw;
+ font-size: min(7.5vw, 7vh);
  white-space: nowrap;
 }
 
 #summary{
-  font-size: 10vw;
+  font-size: min(10vw, 20vh);
   /* white-space: nowrap; */
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  font-weight: 500;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
-#display_name{
-  font-size: 7.5vw;
-  /* white-space: nowrap; */
+#display-name{
+  font-size: min(7.5vw, 9vh);
 }
 
 #error{
   width: 90%;
   color: tomato;
+}
+
+#theme{
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 12px;
+  margin: 12px;
+  border-radius: 5px;
+  border: none;
+  color: var(--background-color);
+  background-color: var(--foreground-color);
 }
 
 @media (orientation: portrait) {
@@ -61,7 +76,6 @@ body{
 
   #coordinates{
     text-align: center;
-    font-size: 7.5vw;
     white-space: pre;
   }
 
@@ -74,7 +88,6 @@ body{
    
   #summary{
     text-align: center;
-    font-size: 10vw;
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
@@ -88,6 +101,5 @@ body{
   
   #display-name {
     text-align: left;
-    font-size: 7.5vw;
   }
 }

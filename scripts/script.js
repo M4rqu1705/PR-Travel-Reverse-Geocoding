@@ -2,6 +2,7 @@ let coordinates = document.getElementById("coordinates");
 let summary = document.getElementById("summary");
 let display_name = document.getElementById("display-name");
 let error_output = document.getElementById("error");
+let light_theme = true;
 
 function run(location) {
   const latitude = location.coords.latitude;
@@ -43,6 +44,30 @@ function main() {
 }
 
 window.addEventListener("load", () => {
+  if (!localStorage.getItem("light-theme"))
+    localStorage.setItem("light-theme", 'dark');
+
+  setTheme();
   main();
   setInterval(main, 30000);
 });
+
+function toggleTheme() {
+  let theme = localStorage.getItem("light-theme");
+  if (theme === 'dark') theme = 'light';
+  else theme = 'dark';
+  localStorage.setItem("light-theme", theme);
+  setTheme(theme);
+}
+
+function setTheme(theme) {
+  const r = document.querySelector(':root');
+
+  if (theme === 'light') {
+    r.style.setProperty('--foreground-color', '#2c2c2c');
+    r.style.setProperty('--background-color', 'whitesmoke');
+  } else {
+    r.style.setProperty('--foreground-color', 'whitesmoke');
+    r.style.setProperty('--background-color', '#2c2c2c');
+  }
+}
