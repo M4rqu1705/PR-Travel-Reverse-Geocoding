@@ -61,7 +61,15 @@ body{
   background-color: var(--foreground-color);
   font-size: min(4vw, 4vh);
   font-weight: 600;
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#theme > img {
+  background-color: var(--foreground-color);
+  color: var(--background-color);
+  width: min(10vw, 10vh);
 }
 
 @media (orientation: landscape) {
