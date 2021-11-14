@@ -49,10 +49,9 @@ body{
   color: tomato;
 }
 
-#theme{
-  display: block;
+#theme-toggler {
   position: fixed;
-  right: 0;
+  left: 0;
   padding: 12px;
   margin: 12px;
   border-radius: 5px;
@@ -66,14 +65,33 @@ body{
   justify-content: center;
 }
 
-#theme > img {
+#theme-toggler > img {
   background-color: var(--foreground-color);
   color: var(--background-color);
-  width: min(10vw, 10vh);
+  width: min(7.5vw, 7.5vh);
+}
+
+#fullscreen-toggler { 
+  position: fixed;
+  top: 0;
+  right: 0;
+  padding: 6px;
+  margin: 6px;
+  border-radius: 2px;
+  border: none;
+  color: var(--background-color);
+  background-color: var(--foreground-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#fullscreen-toggler > img {
+  width: min(6vw, 6vh);
 }
 
 @media (orientation: landscape) {
-  #theme{
+  #theme-toggler{
     top: 0;
   }
 }
@@ -119,8 +137,7 @@ body{
     text-align: left;
   }
 
-  #theme{
+  #theme-toggler{
     bottom: 0;
   }
-
 }
